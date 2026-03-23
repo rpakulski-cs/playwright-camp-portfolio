@@ -1,5 +1,3 @@
-using System.Threading.Tasks;
-using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
 
 namespace playwright_camp_portfolio;
