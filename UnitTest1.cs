@@ -1,3 +1,5 @@
+using Microsoft.Playwright.NUnit;
+
 namespace playwright_camp_portfolio;
 
 public class Tests
