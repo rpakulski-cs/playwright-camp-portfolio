@@ -10,15 +10,14 @@ public class Tests : PageTest
     {
     }
 
-    [Test]
-    public async Task Test1()
+    [TestCase("standard_user", "secret_sauce")]
+    public async Task ShouldLoginSuccesfully(string username, string passowrd)
     {
-        var page = new SearchPage(Page);
+        var page = new LoginPage(Page);
         await page.Navigate();
-        await page.FillUsername("Dzialam!!!!");
 
-        await page.ClickLogin();
+        await page.Login(username, passowrd);
 
-        Assert.IsTrue(Page.Url.Contains("saucedemo"));
+        await Expect(Page).ToHaveURLAsync("https://www.saucedemo.com/inventory.html");
     }
 }
