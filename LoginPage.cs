@@ -1,0 +1,6 @@
+﻿namespace playwright_camp_portfolio;
+
+public class LoginPage
+{
+
+}
