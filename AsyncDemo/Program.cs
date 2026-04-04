@@ -4,5 +4,8 @@ using AsyncDemo;
 Console.WriteLine("Hello, World!");
 
 
-await AsyncWebClient.DemoAsyncHttpClientWithTaskWithAsync();
-//await AsyncWebClient.DemoAsyncHttpClient();
+// await AsyncWebClient.DemoAsyncHttpClientWithLazyAsync();
+// await AsyncWebClient.DemoAsyncHttpClient();
+
+
+AsyncWebClient.DemoSyncHttpClientWithLazyAsync();
