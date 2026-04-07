@@ -24,7 +24,15 @@ public class Tests
         await page.GotoAsync("http://www.eaapp.somee.com");
         await page.ClickAsync("text=Login");
 
+
+        await page.FillAsync("#UserName", "admin");
+        await page.FillAsync("#Password", "password");
+        await page.GetByRole(AriaRole.Button, new(){Name = "Sign In"}).ClickAsync();
+
         await page.ScreenshotAsync(new(){Path = "eaap.jpg"});
+
+        var isExist = await page.Locator("text='Hello admin!'").IsVisibleAsync();
+        Assert.IsTrue(isExist);
 
     }
 }
