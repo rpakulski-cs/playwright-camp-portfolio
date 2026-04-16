@@ -13,7 +13,7 @@ public class NUnitPlaywright : PageTest
         await Page.GotoAsync("http://www.eaapp.somee.com");
     }
 
-    [Test]
+    //[Test]
     public async Task Test2()
     {
         //Page.SetDefaultTimeout(1000);

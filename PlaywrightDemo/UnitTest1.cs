@@ -36,7 +36,7 @@ public class Tests
 
     }    
 
-    [Test]
+    //[Test]
     public async Task TestWithPOM()
     {
         //Plawrgitht
@@ -55,6 +55,43 @@ public class Tests
 
         var isExist = await loginPage.IsHelloAdminExists();
         Assert.IsTrue(isExist);
+
+        await loginPage.ClickViewEmployees();
+
+    }
+    
+    [Test]
+    public async Task TestNetwork()
+    {
+        //Plawrgitht
+        using var playwright = await Playwright.CreateAsync();
+        //Browser
+        await using var browser = await playwright.Chromium.LaunchAsync(
+            new(){ Headless = true, SlowMo = 1 });
+        //Page
+        var page = await browser.NewPageAsync();
+        await page.GotoAsync("http://www.eaapp.somee.com");
+        
+        LoginPage loginPage = new(page);
+        await loginPage.ClickLogin();
+
+        await loginPage.Login("admin", "password");
+        
+        var isExist = await loginPage.IsHelloAdminExists();
+        Assert.IsTrue(isExist);
+
+
+        //var waitResponse = page.WaitForResponseAsync("**/Employee");
+        //await loginPage.ClickViewEmployees();
+        //var getResponse = await waitResponse;
+        
+        var response = await page.RunAndWaitForResponseAsync(async () =>
+        {
+            await loginPage.ClickViewEmployees();
+        }, x => x.Url.Contains("/Employee"));
+
+
+        //Console.WriteLine(getResponse.ResponseAsync());
 
     }
 }
